@@ -18,10 +18,10 @@ const userSchema = new Schema({
 
 const User = model('User', userSchema);
 
-User.create({
-  username: 'kfisch2',
-  email: 'something@gmail.com',
-  // thoughts: [],
-});
+// User.create({
+//   username: 'kfisch2',
+//   email: 'something@gmail.com',
+//   // thoughts: [],
+// });
 
 module.exports = User;
