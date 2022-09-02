@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { Thought } = require('./Thought');
+// const { Thought } = require('./Thought');
 
 const userSchema = new Schema({
   username: {
@@ -13,7 +13,7 @@ const userSchema = new Schema({
     unique: true,
     required: true,
   },
-  thoughts: [Thought],
+  // thoughts: [Thought],
 });
 
 const User = model('User', userSchema);
@@ -21,7 +21,7 @@ const User = model('User', userSchema);
 User.create({
   username: 'kfisch2',
   email: 'something@gmail.com',
-  thoughts: [],
+  // thoughts: [],
 });
 
 module.exports = User;

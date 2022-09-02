@@ -12,7 +12,7 @@ mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/social-net-api',
   {
     useNewUrlParser: true,
-    useUnifieldTopology: true,
+    useUnifiedTopology: true,
   }
 );
 
