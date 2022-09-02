@@ -12,16 +12,23 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     required: true,
+    validate: {
+      validator: function (e) {
+        // regex for validating user's email
+        return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(e);
+      },
+      message: (props) => `${props.value} is not a valid email address`,
+    },
   },
   // thoughts: [Thought],
 });
 
 const User = model('User', userSchema);
 
-// User.create({
-//   username: 'kfisch2',
-//   email: 'something@gmail.com',
-//   // thoughts: [],
-// });
+User.create({
+  username: 'kfisch',
+  email: 'something@yahoo.com',
+  // thoughts: [],
+});
 
 module.exports = User;
