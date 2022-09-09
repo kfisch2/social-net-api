@@ -15,7 +15,7 @@ const UserSchema = new Schema(
       validate: {
         validator: function (email) {
           // regex for validating user's email
-          return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email);
+          return /^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email);
         },
         message: (props) => `${props.value} is not a valid email address`,
       },
@@ -26,7 +26,12 @@ const UserSchema = new Schema(
         ref: 'Thought',
       },
     ],
-    friends: [],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     toJSON: {
@@ -38,9 +43,14 @@ const UserSchema = new Schema(
   }
 );
 
-UserSchema.virtual("thoughtCount").get(function () {
-  return this.thoughts.reduce((total, thought) => total + thought.reactions.length + 1, 0);
+UserSchema.virtual('thoughtCount').get(function () {
+  return this.thoughts.reduce(
+    (total, thought) => total + thought.reactions.length + 1, 0);
 });
+
+UserSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+})
 
 const User = model('User', UserSchema);
 module.exports = User;

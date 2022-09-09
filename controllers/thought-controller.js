@@ -3,12 +3,20 @@ const { Thought, User } = require('../models');
 const ThoughtController = {
   getAllThoughts(req, res) {
     Thought.find({})
+      .populate({
+        path: 'reactions',
+        select: '-__v',
+      })
       .select('-__v')
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => res.json(err));
   },
   getOneThought({ params }, res) {
     Thought.findOne({ _id: params.id })
+      .populate({
+        path: 'reactions',
+        select: '-__v',
+      })
       .select('-__v')
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
@@ -78,12 +86,12 @@ const ThoughtController = {
   // delete reaction
   deleteReaction({ params }, res) {
     Thought.findOneAndUpdate(
-      { _id: params.id },
+      { _id: params.thoughtId },
       { $pull: { reactions: { reactionId: params.reactionId } } },
       { new: true }
     )
-    .then((dbThoughtData) => res.json(dbThoughtData))
-    .catch(err => res.json(err));
+      .then((dbUserData) => re.json(dbUserData))
+      .catch((err) => res.json(err));
   },
 };
 
