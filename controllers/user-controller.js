@@ -65,7 +65,7 @@ const userController = {
   },
   
   addFriend({ params }, res) {
-    User.findOne({ _id: params.id })
+    User.findOne({ _id: params.friendId })
       .then(({ _id }) => {
         return User.findOneAndUpdate(
           { _id: params.userId },
@@ -85,6 +85,9 @@ const userController = {
 
   getFriends({ params }, res) {
     User.findOne({ _id: params.id })
+      .populate({
+        path: 'friends'
+      })
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({ message: 'No user with that id' });
