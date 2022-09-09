@@ -17,11 +17,21 @@ router.route('/:userId').post(createThought);
 
 router
   .route('/:id')
+  // working
   .get(getOneThought)
+  // working
   .put(updateThought)
+
+router
+  .route('/:userId/:thoughtId')
+  // working
+  .put(addReaction)
+  // working
   .delete(deleteThought);
 
-router.route('/:userId/:thoughtId').put(addReaction).delete(deleteThought);
-router.route('/:userId/:thoughtId/:reactionId').delete(deleteReaction);
+router
+  .route('/:userId/:thoughtId/:reactionId')
+  // working
+  .delete(deleteReaction);
 
 module.exports = router;

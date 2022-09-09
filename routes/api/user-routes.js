@@ -21,6 +21,7 @@ router
 .route('/:id')
 .get(getOneUser)
 .put(updateUser)
+// working
 .delete(deleteUser);
 
 router
