@@ -12,7 +12,7 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
   getOneThought({ params }, res) {
-    Thought.findOne({ _id: params.id })
+    Thought.findOne({ _id: params.thoughtId })
       .populate({
         path: 'reactions',
         select: '-__v',
@@ -27,11 +27,11 @@ const thoughtController = {
       })
       .catch((err) => res.json(err));
   },
-  createThought({ params, body }, res) {
+  createThought({ body }, res) {
     Thought.create(body)
       .then(({ _id }) => {
         return User.findOneAndUpdate(
-          { _id: params.userId },
+          { _id: body.userId },
           { $push: { thoughts: _id } },
           { new: true, runValidators: true }
         );
