@@ -14,17 +14,15 @@ const {
 // /api/users
 router.route('/').get(getAllUsers).post(createUser);
 
-router
-  .route('/:id')
-  .get(getOneUser)
-  .put(updateUser)
-  // working
-  .delete(deleteUser);
+router.route('/:id').get(getOneUser).put(updateUser).delete(deleteUser);
 
-router.route('/:id/friends').get(getFriends);
+// get a user's friend list
+router.route('/:userId/friends').get(getFriends);
 
+// add a friend
 router.route('/:userId/friends/:friendId').post(addFriend);
 
-router.route('/:id/friends/:friendId').delete(removeFriend);
+// delete friend
+router.route('/:userId/friends/:friendId').delete(removeFriend);
 
 module.exports = router;
