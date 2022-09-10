@@ -26,7 +26,9 @@ Want to contribute to this project? Fork it!
 
 ## Tests
 
-Use insomnia to test the various routes. To get a demonstration, click the following links: -[start the server]() -[test routes in insomnia](https://drive.google.com/file/d/1abZr0kK6U5aNiV03HciNW5GM6eSClSnb/view)
+You can view these video demonstrations on how to start the server and test the routes using insomnia: 
+- [Start the server](https://drive.google.com/file/d/1NYAiMjK-eD5y5_RJQEQs3i0LIZ8GtzMc/view) 
+- [Test routes in insomnia](https://drive.google.com/file/d/1abZr0kK6U5aNiV03HciNW5GM6eSClSnb/view)
 
 ## Questions
 
